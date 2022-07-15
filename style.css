@@ -1,0 +1,148 @@
+.Para {
+  margin-bottom:0;
+  display: inline;
+}
+
+.NewGraph {
+  visibility:hidden;
+  background: black;
+  z-index: -1;
+  height: 100px;
+  width: 100px;
+  /* border: 2px solid pink; */
+  transform: translate(-50%,-50%);
+  position: absolute;
+  border-radius:50px ;
+  transition: 0 ;
+}
+
+
+.Noeud {
+  visibility:visible;
+  color: red;
+  background: black;
+  z-index: -1;
+  height: 100px;
+  width: 100px;
+  /* border: 2px solid pink; */
+  transform: translate(-50%,-50%);
+  position: absolute;
+  border-radius:50px ;
+  transition: 0 ;
+}
+
+.blabla {
+  position: relative;
+  text-align: center;
+  width: 100px;
+  font-size: xx-large;
+}
+
+#pointA {
+  top: 50%;
+  left: 50%;
+}
+
+.point {
+  margin: 0;
+  position:absolute;
+  background-color: black;
+  height: 10px;
+  width: 10px;
+  border-radius: 50%;
+  z-index: 5;
+  transform: translate(-50%,-50%);
+}
+/*
+footer {
+  margin: 0;
+  padding: 0;
+  background: #23b2a4;
+  width: 100%;
+   height: 20px; 
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+} 
+*/
+
+.barre {
+  background-color: blue;
+  width: 0px;
+  height:1px;
+  transform: skew(0deg, 0deg) rotate(0.5turn)  ; /* translate(-50%,-50%) ce qui permet de faire l'inclinaison */
+  position:absolute;
+  top: 50%;
+  left: 50%;
+  bottom: 50%;
+  right: 50%;
+}
+/* * {
+  box-sizing: border-box;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  list-style: none;
+}
+
+body {
+  text-align: center;
+  margin: 0;
+  color: white;
+  min-height: 200vh;
+  overflow-x: hidden;
+}
+h4 {
+  background-color: yellowgreen;
+  position: relative;
+  width: 250px;
+  margin-left: 50%;
+  margin-right: 50%;
+  transform: translate(-50%,-50%);
+}
+.box {
+  margin: 60px;
+  border: 0px solid white;
+  transition: 0.25s ease;
+  background: black;
+  padding: 10px;
+  align-items: center;
+}
+
+p {
+  visibility: hidden;
+  width: 240px;
+  margin: 10px auto 0;
+  opacity: 0;
+  transition: 0.6s;
+  transform: translateX(-200px);
+}
+
+.question-clicked {
+  background: rgb(47, 47, 47);
+  border-radius: 30px;
+  border: 6px dashed pink;
+}
+
+.show-response {
+  visibility: visible;
+  opacity: 1;
+  transform: translateX(0px);
+}
+
+
+
+nav {
+  background: pink;
+  position: fixed;
+  width: 100%;
+  height: 50px;
+  top: -50px;
+  transition: 0.4s;
+}
+
+ul {
+  display:flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 0;
+} */

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> liason Page  </title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    
+    <header >
+        <div>Page de liason</div>
+    </header>
+    
+    <main>
+        <p>Le point A et B son constament relier </p>
+        <!-- information utile comme la postion de ma souris et le centre de la fenetre  -->
+        <p class="Para">position de la souris X = <p class="Para" id="X"></p> <br>
+        position de la souris Y = <p class="Para" id="Y"></p> <br>
+        ------------------------------------------------ <br>
+        centre X = <p class="Para" id="centreX"></p><br>
+        centre Y = <p class="Para" id="centreY"></p>
+        </p>
+        <!-- point B est un cercle qui est au centre de la fenetre  -->
+        <div class="point" id="pointB"><br>B</div>
+        <!-- point A est un cerclre qui suivra la souris -->
+        <div class="point" id="pointA"><br>A</div>
+        <!-- la barre / le trait / le segment / ta captait c'est juste un trait et je veux qu'il suit ma souris donc il faut qu'il adapte sa longuer et son angle -->
+        <div class="barre"></div>
+    </main>
+
+    
+    <footer>fait par Yassine Zaoui</footer>
+
+    <script src="liason.js"></script>
+</body>
+</html>
