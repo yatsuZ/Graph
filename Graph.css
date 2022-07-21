@@ -34,6 +34,7 @@
   }
 
   .barre {
+    visibility:visible;
     background-color: blue;
     width: 0px;
     height:1px;
@@ -43,4 +44,14 @@
     left: 50%;
     bottom: 50%;
     right: 50%;
+  }
+.NewBarre {
+  visibility:hidden;
+    background-color: blue;
+    width: 0px;
+    height:1px;
+    transform: skew(0deg, 0deg) rotate(0.5turn)  ; /* translate(-50%,-50%) ce qui permet de faire l'inclinaison */
+    position:absolute;
+    top: 50%;
+    left: 50%;
   }
