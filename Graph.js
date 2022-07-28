@@ -17,12 +17,15 @@ const pointB = document.getElementById("B")
 
 const pointC = document.getElementById("C")
 
+let Nodes = document.querySelectorAll(".Noeud")
+
 let id = 0
 
 let idBarre = 0
 
 let debut = false
 
+let connexion = true
 /////////////////// creation des event
 
 // event quand on appuye sur crée un noeud
@@ -58,61 +61,110 @@ NewGraph.addEventListener("click",Stoper_propagation);//creation de l'event Stop
 
 function Stoper_propagation(){//Je veux que quand je click la div ne bouge plus 
     console.log("je click sur le cercle");//j'affiche
-    var FixGraph = document.createElement("div");
-    FixGraph.setAttribute("id","Noeud"+id);
-    FixGraph.setAttribute("class","Noeud");
-    FixGraph.style.left = NewGraph.style.left;
-    FixGraph.style.top = NewGraph.style.top;
-    
+    if (debut){
+        //("1. creation du noeud")
+        var FixGraph = document.createElement("div");
+        FixGraph.setAttribute("id","Noeud"+id);
+        FixGraph.setAttribute("class","Noeud");
+        FixGraph.style.left = NewGraph.style.left;
+        FixGraph.style.top = NewGraph.style.top;
+        
 
-    var name = document.createElement("p");
-    name.setAttribute("class","blabla")
-    var txt = document.createTextNode(id);
-    name.appendChild(txt);
-    FixGraph.appendChild(name);
-    
-    main.appendChild(FixGraph);
-    id++;
-    
-    
-    NewGraph.style.visibility = "hidden";//je rend visible la div mousemove
-    NewGraph.style.left ="0 px";
-    NewGraph.style.top = "0 px";//La div suit la souris
-    debut = false
-    let Nodes = document.querySelectorAll(".Noeud")
-    // console.log("Node === ",Nodes)
-    // crée une liason
-    Nodes.forEach((Noeud)=> {
-        Noeud.addEventListener("click",()=>{
-            NewBarre.style.top = Noeud.style.top;
-            console.log(NewBarre.style.top)
-
-            NewBarre.style.left = Noeud.style.left;
-            console.log(NewBarre.style.left)
-
-            NewBarre.style.visibility = "visible"
-            console.log(NewBarre.style.visibility)
-            pointA.style.top = Noeud.style.top;
-            pointA.style.left = Noeud.style.left
-            pointC.style.top = Noeud.style.top
-
-            html.addEventListener("mousemove",Mouvement_souris_barre)
-
-            // console.log("test liason");
-            // console.log("id = Noeud"+Noeud.textContent);
-            Nodes.forEach((N)=>{
-                N.style.background = "blue"
-            })
-        })
-    });
-
-    
+        var name = document.createElement("p");
+        name.setAttribute("class","blabla")
+        var txt = document.createTextNode(id);
+        name.appendChild(txt);
+        FixGraph.appendChild(name);
+        
+        main.appendChild(FixGraph);
+        id++;
+        
+        
+        NewGraph.style.visibility = "hidden";//je rend visible la div mousemove
+        NewGraph.style.left ="0 px";
+        NewGraph.style.top = "0 px";//La div suit la souris   
+        Creation_liason();
+    }
+    debut = false;
 }
+
+// a chaque fois que je finis de crée un nouveaux graphe je peux crée des liason entre chaque graphe 
+//
+let tour = 0;
+let Number_of_Node = 0;
+let index_for_liason = 0;
+function Creation_liason () {
+    Nodes = document.querySelectorAll(".Noeud")
+    Number_of_Node = Nodes.length;
+//trop galere de faire les event avec le la classe for each
+    // // console.log("Node === ",Nodes)
+    // // crée une liason
+    // console.log(Nodes)
+    // Nodes.forEach((Noeud)=> {
+    //     if (tour==0){
+    //         console.log("-----------DEBU--------------")
+    //     }
+    //     Noeud.addEventListener("click",()=>{//(quand il est une fois vrai il et vrais pour la suite de la liste cela pose problème :( )
+    //         if (tour==index_for_liason) {
+    //             index_for_liason--
+    //             console.log("ICI = ",Noeud.id)
+    //             console.log("2. creation d'une liason")
+    //         // console.log(connexion)
+    //         if (connexion== true){
+    //             Nodes.forEach((N)=>{
+    //                 N.style.background = "black"
+    //             })
+    //             console.log("cas 1 ")
+    //             connexion = false;
+    //         }else{
+    //             console.log("cas 2")
+
+    //             // je separe en deux 
+    //             NewBarre.style.top = Noeud.style.top;
+    //             // console.log(NewBarre.style.top)
+                
+    //             NewBarre.style.left = Noeud.style.left;
+    //             // console.log(NewBarre.style.left)
+                
+    //             NewBarre.style.visibility = "visible"
+    //             // console.log(NewBarre.style.visibility)
+    //             pointA.style.top = Noeud.style.top;
+    //             pointA.style.left = Noeud.style.left
+    //             pointC.style.top = Noeud.style.top
+                
+    //             html.addEventListener("mousemove",Mouvement_souris_barre)
+                
+    //             // console.log("test liason");
+    //             // console.log("id = Noeud"+Noeud.textContent);
+    //             // console.log("ici = ",Nodes)// pourquoi il ne prend pas tout les Nodes ?? // il doit y avoir un truc avec les paire impaire mais jsp pk ?
+    //             Nodes.forEach((N)=>{
+    //                 N.style.background = "blue"
+    //             })
+    //             connexion = true
+    //             }
+    //         }
+    //     });
+    //     console.log("nbr de tour = ",tour)
+    //     tour++;
+    //     index_for_liason++;
+    //     if (tour>=Number_of_Node){
+    //         console.log("tour =",tour," | Number of node = ",Number_of_Node," | index for liason = ",index_for_liason)
+    //         tour=0;
+    //         index_for_liason = 0 ;
+    //         console.log("----------FIN---------------")
+    //     }
+    // });
+}
+
+
+
 //crée le point A B C pour savoir ou est chaque point important
+
+
 
 /// fonction qui permet de bien manipuler la barre
 function Mouvement_souris_barre(e) {
-    console.log("test de la fonction mouvement souris")
+    // console.log("test de la fonction mouvement souris")
     //aplication fo DOM
     NewBarre.style.background = "red";
     // deplacement du point B constant
@@ -124,16 +176,15 @@ function Mouvement_souris_barre(e) {
     let AC = (e.pageX-parseInt(pointA.style.left));
     let BC = (e.pageY-parseInt(pointC.style.top));
     
-    console.log(pointA.style.left)
+    // console.log(pointA.style.left)
     let hyphotenus = Math.pow(AC,2)+Math.pow(BC,2);
     
-    console.log(hyphotenus)
+    // console.log(hyphotenus)
     hyphotenus = Math.sqrt(hyphotenus);
     //sqrt( (Xb - Xa)**2 + (Yb - Ya)**2 ) = la distance du segement AB
-    NewBarre.style.width = hyphotenus-10+"px";
 //////////////////////////////////// Barre et les angles
     NewBarre.style.left = parseInt(pointA.style.left)- hyphotenus/2+'px';
-    NewBarre.style.width = hyphotenus+"px";
+    NewBarre.style.width = hyphotenus-5+"px";//petit decallage sinon compliquer pour apuyer les noeud
     let tan = BC/AC
 
     let angleCAB = Math.atan(tan)*180/3.14;
